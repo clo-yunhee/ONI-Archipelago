@@ -28,9 +28,9 @@ namespace ArchipelagoNotIncluded
             APWorld_Version = new Version(version);
             if (win_condition == null)
                 goal = "research_all";
-            technologies = new Dictionary<string, List<string>>();
-            apModItems = new List<string>();
-            resourceChecks = new List<string>();
+            technologies = [];
+            apModItems = [];
+            resourceChecks = [];
         }
 
         public string GetGoal()

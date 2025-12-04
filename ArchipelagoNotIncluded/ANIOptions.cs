@@ -86,28 +86,22 @@ namespace ArchipelagoNotIncluded
                 if (ArchipelagoNotIncluded.AllModItems.Count > 0)
                 {
                     text = $"Mod List created at {modItemsPath} \n\n";
-                    using (FileStream fs = File.Open(Path.Combine(modItemsPath, $"{SlotName}_ModItems.json"), FileMode.Create))
-                    {
-                        using (StreamWriter sw = new StreamWriter(fs))
-                        {
-                            using (JsonTextWriter jw = new JsonTextWriter(sw))
-                            {
-                                jw.Formatting = Formatting.Indented;
-                                jw.IndentChar = ' ';
-                                jw.Indentation = 4;
+                    using FileStream fs = File.Open(Path.Combine(modItemsPath, $"{SlotName}_ModItems.json"), FileMode.Create);
+                    using StreamWriter sw = new(fs);
+                    using JsonTextWriter jw = new(sw);
+                    jw.Formatting = Formatting.Indented;
+                    jw.IndentChar = ' ';
+                    jw.Indentation = 4;
 
-                                JsonSerializer serializer = new JsonSerializer();
-                                serializer.Serialize(jw, ArchipelagoNotIncluded.AllModItems);
-                            }
-                        }
-                    }
+                    JsonSerializer serializer = new();
+                    serializer.Serialize(jw, ArchipelagoNotIncluded.AllModItems);
                 }
                 CreateModList = false;
                 POptions.WriteSettings(this);
             }
 
             ArchipelagoNotIncluded.netmon.session.Socket.DisconnectAsync();
-            APNetworkMonitor netmon = new APNetworkMonitor(URL, Port, SlotName, Password);
+            APNetworkMonitor netmon = new(URL, Port, SlotName, Password);
             netmon.StartSession();
             var dialogue = ((ConfirmDialogScreen)KScreenManager.Instance.StartScreen(ScreenPrefabs.Instance.ConfirmDialogScreen.gameObject, Global.Instance.globalCanvas));
             text += "Connection to Archipelago failed.\nPlease check your connection settings and try again.";
@@ -154,7 +148,7 @@ namespace ArchipelagoNotIncluded
 
         public IEnumerable<IOptionsEntry> CreateOptions()
         {
-            return new List<IOptionsEntry>();
+            return [];
         }
     }
 }

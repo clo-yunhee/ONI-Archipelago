@@ -26,7 +26,7 @@ namespace ArchipelagoNotIncluded
     public class APNetworkMonitor
     {
         public ArchipelagoSession session = null;
-        public static Version APVersion = new Version(0, 5, 1);
+        public static Version APVersion = new(0, 5, 1);
 
         private readonly string game = "Oxygen Not Included";
         private string URL = "localhost";
@@ -36,11 +36,11 @@ namespace ArchipelagoNotIncluded
         private ItemsHandlingFlags Flags = ItemsHandlingFlags.AllItems;
 
         private bool initialSyncComplete = false;
-        public Dictionary<string, CarePackageInfo> CarePackages = new Dictionary<string, CarePackageInfo>();
+        public Dictionary<string, CarePackageInfo> CarePackages = [];
         public bool ReadyForItems = false;
 
-        public static ConcurrentQueue<ItemInfo> ItemQueue = new ConcurrentQueue<ItemInfo>();
-        public static ConcurrentQueue<string> packageQueue = new ConcurrentQueue<string>();
+        public static ConcurrentQueue<ItemInfo> ItemQueue = new();
+        public static ConcurrentQueue<string> packageQueue = new();
 
         public static int HighestCount = 0;
         public static string seed = string.Empty;
@@ -133,7 +133,7 @@ namespace ArchipelagoNotIncluded
                         Password = Password,
                         ItemsHandling = Flags,
                         RequestSlotData = true,
-                        Tags = new string[] { },
+                        Tags = [],
                         Version = new NetworkVersion(APVersion)
                     });
                     break;
@@ -219,7 +219,7 @@ namespace ArchipelagoNotIncluded
             if (APSaveData.Instance.LocationQueue.IsEmpty)
                 return;
 
-            SendLocationChecks(APSaveData.Instance.LocationQueue.ToArray());
+            SendLocationChecks([.. APSaveData.Instance.LocationQueue]);
         }
 
         private void OnItemReceived(ReceivedItemsHelper helper)
@@ -338,6 +338,8 @@ namespace ArchipelagoNotIncluded
             Debug.Log($"AddItem: {item.ItemName} MostRecentCount: {APSaveData.Instance.LastItemIndex} lastItem: {ArchipelagoNotIncluded.lastItem} Count: {session.Items.AllItemsReceived.Count}");
             if (ArchipelagoNotIncluded.lastItem == session.Items.AllItemsReceived.Count)
                 return;
+            if (APSaveData.Instance.LastItemIndex > session.Items.AllItemsReceived.Count)
+                APSaveData.Instance.LastItemIndex = 0;
             ArchipelagoNotIncluded.lastItem++;
             bool newitem = ArchipelagoNotIncluded.lastItem > APSaveData.Instance.LastItemIndex;
             if (newitem)
@@ -438,8 +440,7 @@ namespace ArchipelagoNotIncluded
                 return;
             }
             HashedString hashedString = BuildMenu.Instance.tagCategoryMap[buildingDef.Tag];
-            HashSet<HashedString> hashSet = new HashSet<HashedString>();
-            hashSet.Add(hashedString);
+            HashSet<HashedString> hashSet = [hashedString];
             BuildMenu.Instance.AddParentCategories(hashedString, hashSet);
             BuildMenuCategoriesScreen categoriesScreen = BuildMenu.Instance.GetComponent<BuildMenuCategoriesScreen>();
             if (categoriesScreen != null)
@@ -464,6 +465,7 @@ namespace ArchipelagoNotIncluded
 
         public void PopulateCarePackages()
         {
+            // TODO: Configurable care package sizes
             CarePackages.Add("Sandstone", new CarePackageInfo(ElementLoader.FindElementByHash(SimHashes.SandStone).tag.ToString(), 2000f, null));
             CarePackages.Add("Dirt", new CarePackageInfo(ElementLoader.FindElementByHash(SimHashes.Dirt).tag.ToString(), 1000f, null));
             CarePackages.Add("Algae", new CarePackageInfo(ElementLoader.FindElementByHash(SimHashes.Algae).tag.ToString(), 1000f, null));

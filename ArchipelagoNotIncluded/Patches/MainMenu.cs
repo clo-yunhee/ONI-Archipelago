@@ -45,7 +45,7 @@ namespace ArchipelagoNotIncluded.Patches
                     __instance.asteroidData.Clear();
                     __instance.clusterKeys.Add(cluster);
                     string layout = SettingsCache.clusterLayouts.clusterCache[cluster].GetStartWorld();
-                    ColonyDestinationAsteroidBeltData value = new ColonyDestinationAsteroidBeltData(layout, 0, cluster);
+                    ColonyDestinationAsteroidBeltData value = new(layout, 0, cluster);
                     __instance.asteroidData[cluster] = value;
                     __instance.clusterStartWorlds.Add(cluster, layout);
 
