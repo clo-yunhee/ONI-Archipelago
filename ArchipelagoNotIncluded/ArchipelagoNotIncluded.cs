@@ -69,88 +69,88 @@ namespace ArchipelagoNotIncluded
             }
         }*/
         public static APSeedInfo info = null;
-        public static List<KeyValuePair<string, string>> apItems = new List<KeyValuePair<string, string>>();
-        public static List<DefaultItem> AllDefaultItems = new List<DefaultItem>();
-        public static List<ModItem> AllModItems = new List<ModItem>();
-        public static Dictionary<string, string> allTechList = new Dictionary<string, string>();
+        public static List<KeyValuePair<string, string>> apItems = [];
+        public static List<DefaultItem> AllDefaultItems = [];
+        public static List<ModItem> AllModItems = [];
+        public static Dictionary<string, string> allTechList = [];
         public static string AtmoSuitTech = "";
         public static string JetSuitTech = "";
         public static string LeadSuitTech = "";
 
-        public static Dictionary<string, List<string>> Sciences = new Dictionary<string, List<string>>();
+        public static Dictionary<string, List<string>> Sciences = [];
 
-        public static List<string> PreUnlockedTech = new List<string>()
-        {
+        public static List<string> PreUnlockedTech =
+        [
             "BetaResearchPoint",
             "DeltaResearchPoint",
             "OrbitalResearchPoint",
             "ConveyorOverlay",
             "AutomationOverlay",
             "SuitsOverlay"
+        ];
+
+        public static Dictionary<string, string> BasePlanets = new()
+        {
+            ["terra"] = "clusters/SandstoneDefault",
+            ["relica"] = "dlc2::clusters/PrehistoricBaseGameCluster",
+            ["ceres"] = "dlc2::clusters/CeresBaseGameCluster",
+            ["oceania"] = "clusters/Oceania",
+            ["rime"] = "clusters/SandstoneFrozen",
+            ["verdante"] = "clusters/ForestLush",
+            ["arboria"] = "clusters/ForestDefault",
+            ["volcanea"] = "clusters/Volcanic",
+            ["badlands"] = "clusters/Badlands",
+            ["aridio"] = "clusters/ForestHot",
+            ["oasisse"] = "clusters/Oasis",
         };
 
-        public static Dictionary<string, string> BasePlanets = new Dictionary<string, string>()
+        public static Dictionary<string, string> BaseLabPlanets = new()
         {
-            {"terra", "clusters/SandstoneDefault" },
-            {"relica", "dlc2::clusters/PrehistoricBaseGameCluster" },
-            {"ceres", "dlc2::clusters/CeresBaseGameCluster" },
-            {"oceania", "clusters/Oceania" },
-            {"rime", "clusters/SandstoneFrozen" },
-            {"verdante", "clusters/ForestLush" },
-            {"arboria", "clusters/ForestDefault" },
-            {"volcanea", "clusters/Volcanic" },
-            {"badlands", "clusters/Badlands" },
-            {"aridio", "clusters/ForestHot" },
-            {"oasisse", "clusters/Oasis" }
+            ["skewed"] = "clusters/KleiFest2023",
+            ["relicargh"] = "dlc4::clusters/PrehistoricShatteredBaseGameCluster",
+            ["blasted"] = "dlc2::clusters/CeresBaseGameShatteredCluster",
         };
 
-        public static Dictionary<string, string> BaseLabPlanets = new Dictionary<string, string>()
+        public static Dictionary<string, string> ClassicPlanets = new()
         {
-            {"skewed", "clusters/KleiFest2023" },
-            {"relicargh", "dlc4::clusters/PrehistoricShatteredBaseGameCluster" },
-            {"blasted", "dlc2::clusters/CeresBaseGameShatteredCluster" }
+            ["terra"] = "expansion1::clusters/VanillaSandstoneCluster",
+            ["relica"] = "dlc4::clusters/PrehistoricClassicCluster",
+            ["ceres"] = "dlc2::clusters/CeresClassicCluster",
+            ["oceania"] = "expansion1::clusters/VanillaOceaniaCluster",
+            ["squelchy"] = "expansion1::clusters/VanillaSwampCluster",
+            ["rime"] = "expansion1::clusters/VanillaSandstoneFrozenCluster",
+            ["verdante"] = "expansion1::clusters/VanillaForestCluster",
+            ["arboria"] = "expansion1::clusters/VanillaArboriaCluster",
+            ["volcanea"] = "expansion1::clusters/VanillaVolcanicCluster",
+            ["badlands"] = "expansion1::clusters/VanillaBadlandsCluster",
+            ["aridio"] = "expansion1::clusters/VanillaAridioCluster",
+            ["oasisse"] = "expansion1::clusters/VanillaOasisCluster",
         };
 
-        public static Dictionary<string, string> ClassicPlanets = new Dictionary<string, string>()
+        public static Dictionary<string, string> SpacedOutPlanets = new()
         {
-            {"terra", "expansion1::clusters/VanillaSandstoneCluster" },
-            {"relica", "dlc4::clusters/PrehistoricClassicCluster" },
-            {"ceres", "dlc2::clusters/CeresClassicCluster" },
-            {"oceania", "expansion1::clusters/VanillaOceaniaCluster" },
-            {"squelchy", "expansion1::clusters/VanillaSwampCluster" },
-            {"rime", "expansion1::clusters/VanillaSandstoneFrozenCluster" },
-            {"verdante", "expansion1::clusters/VanillaForestCluster" },
-            {"arboria", "expansion1::clusters/VanillaArboriaCluster" },
-            {"volcanea", "expansion1::clusters/VanillaVolcanicCluster" },
-            {"badlands", "expansion1::clusters/VanillaBadlandsCluster" },
-            {"aridio", "expansion1::clusters/VanillaAridioCluster" },
-            {"oasisse", "expansion1::clusters/VanillaOasisCluster" }
+            ["terrania"] = "expansion1::clusters/SandstoneStartCluster",
+            ["relica_minor"] =  "dlc4::clusters/PrehistoricSpacedOutCluster",
+            ["ceres_minor"] = "dlc2::clusters/CeresSpacedOutCluster",
+            ["folia"] = "expansion1::clusters/ForestStartCluster",
+            ["quagmiris"] = "expansion1::clusters/SwampStartCluster",
+            ["metallic_swampy"] = "expansion1::clusters/MiniClusterMetallicSwampyStart",
+            ["desolands"] = "expansion1::clusters/MiniClusterBadlandsStart",
+            ["frozen_forest"] = "expansion1::clusters/MiniClusterForestFrozenStart",
+            ["flipped"] = "expansion1::clusters/MiniClusterFlippedStart",
+            ["radioactive_ocean"] = "expansion1::clusters/MiniClusterRadioactiveOceanStart",
+            ["ceres_mantle"] = "dlc2::clusters/CeresSpacedOutShatteredCluster",
         };
 
-        public static Dictionary<string, string> SpacedOutPlanets = new Dictionary<string, string>()
+        public static Dictionary<string, string> ClassicLabPlanets = new()
         {
-            {"terrania", "expansion1::clusters/SandstoneStartCluster" },
-            {"relica_minor", "dlc4::clusters/PrehistoricSpacedOutCluster" },
-            {"ceres_minor", "dlc2::clusters/CeresSpacedOutCluster" },
-            {"folia", "expansion1::clusters/ForestStartCluster" },
-            {"quagmiris", "expansion1::clusters/SwampStartCluster" },
-            {"metallic_swampy", "expansion1::clusters/MiniClusterMetallicSwampyStart" },
-            {"desolands", "expansion1::clusters/MiniClusterBadlandsStart" },
-            {"frozen_forest", "expansion1::clusters/MiniClusterForestFrozenStart" },
-            {"flipped", "expansion1::clusters/MiniClusterFlippedStart" },
-            {"radioactive_ocean", "expansion1::clusters/MiniClusterRadioactiveOceanStart" },
-            {"ceres_mantle", "dlc2::clusters/CeresSpacedOutShatteredCluster" }
+            ["skewed"] = "expansion1::clusters/KleiFest2023Cluster",
+            ["relicargh"] = "dlc4::clusters/PrehistoricShatteredClassicCluster",
+            ["blasted"] = "dlc2::clusters/CeresClassicShatteredCluster",
         };
 
-        public static Dictionary<string, string> ClassicLabPlanets = new Dictionary<string, string>()
-        {
-            {"skewed", "expansion1::clusters/KleiFest2023Cluster" },
-            {"relicargh", "dlc4::clusters/PrehistoricShatteredClassicCluster" },
-            {"blasted", "dlc2::clusters/CeresClassicShatteredCluster" }
-        };
-
-        public static List<string> StarterTech = new List<string>()
-        {
+        public static List<string> StarterTech =
+        [
             "Ladder",
             "Tile",
             "SnowTile",
@@ -171,10 +171,10 @@ namespace ArchipelagoNotIncluded
             "Grave",
             "Bed",
             "ResearchCenter"
-        };
+        ];
 
-        public static List<string> ItemList = new List<string>();
-        public static List<string> ItemListDetailed = new List<string>();
+        public static List<string> ItemList = [];
+        public static List<string> ItemListDetailed = [];
         public static bool DebugWasUsed = false;
         public static int lastIndexSaved = 0;
         public static int runCount = 0;
@@ -262,7 +262,8 @@ namespace ArchipelagoNotIncluded
                 Debug.Log($"Scene: {scene.name}");
                 if (scene.name == "frontend")
                 {
-                    List<TechItem> newTechs = new List<TechItem>();
+                    List<TechItem> newTechs = [];
+                    AnalyzeBuildingComponents(2);
                     foreach (KeyValuePair<IBuildingConfig, BuildingDef> kvp in BuildingConfigManager.Instance.configTable)
                     {
                         TechItem techItem = Db.Get().TechItems.TryGet(kvp.Value.PrefabID);
@@ -295,21 +296,15 @@ namespace ArchipelagoNotIncluded
                         Debug.LogWarning($"New Building(s) Added. Make sure all fields are correct.");
                         foreach (TechItem techItem in newTechs)
                             AllDefaultItems.Add(new DefaultItem(techItem));
-                        using (FileStream fs = File.Open(Path.Combine(modDirectory.FullName, "DefaultItemList.json"), FileMode.Create))
-                        {
-                            using (StreamWriter sw = new StreamWriter(fs))
-                            {
-                                using (JsonTextWriter jw = new JsonTextWriter(sw))
-                                {
-                                    jw.Formatting = Formatting.Indented;
-                                    jw.IndentChar = ' ';
-                                    jw.Indentation = 4;
+                        using FileStream fs = File.Open(Path.Combine(modDirectory.FullName, "DefaultItemList.json"), FileMode.Create);
+                        using StreamWriter sw = new(fs);
+                        using JsonTextWriter jw = new(sw);
+                        jw.Formatting = Formatting.Indented;
+                        jw.IndentChar = ' ';
+                        jw.Indentation = 4;
 
-                                    JsonSerializer serializer = new JsonSerializer();
-                                    serializer.Serialize(jw, AllDefaultItems);
-                                }
-                            }
-                        }
+                        JsonSerializer serializer = new();
+                        serializer.Serialize(jw, AllDefaultItems);
                     }
                 }
             };
@@ -355,5 +350,76 @@ namespace ArchipelagoNotIncluded
                 netmon.SendLocationChecks(LocationNames);
             }
         }
+
+        public static Dictionary<Type, List<string>> AnalyzeBuildingComponents(int minOccurrence = 2)
+        {
+            BuildingConfigManager instance = BuildingConfigManager.Instance;
+            Dictionary<IBuildingConfig, BuildingDef> dictionary = instance?.configTable;
+            if (dictionary == null)
+            {
+                Debug.LogWarning("AnalyzeBuildingComponents: configTable is null");
+                return [];
+            }
+            Dictionary<Type, List<string>> dictionary2 = [];
+            foreach (KeyValuePair<IBuildingConfig, BuildingDef> keyValuePair in dictionary)
+            {
+                BuildingDef def = keyValuePair.Value;
+                string prefabID = def?.PrefabID;
+                if (!string.IsNullOrEmpty(prefabID))
+                {
+                    GameObject prefab = Assets.GetPrefab(prefabID);
+                    if (!(prefab == null))
+                    {
+                        int componentCount = prefab.GetComponentCount();
+                        for (int i = 0; i < componentCount; i++)
+                        {
+                            Component componentAtIndex = prefab.GetComponentAtIndex(i);
+                            if (!(componentAtIndex == null))
+                            {
+                                Type type = componentAtIndex.GetType();
+                                if (!dictionary2.TryGetValue(type, out List<string> list))
+                                {
+                                    dictionary2[type] = list = [];
+                                }
+                                if (!list.Contains(prefabID))
+                                {
+                                    list.Add(prefabID);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            int totalBuildings = dictionary.Count;
+            Debug.Log($"AnalyzeBuildingComponents: examined {totalBuildings} buildings, found {dictionary2.Count} distinct component types.");
+            foreach (KeyValuePair<Type, List<string>> keyValuePair2 in dictionary2.OrderByDescending((KeyValuePair<Type, List<string>> k) => k.Value.Count))
+            {
+                if (keyValuePair2.Value.Count >= minOccurrence)
+                {
+                    Debug.Log(string.Format(" - {0} appears in {1} buildings (example: {2}{3})",
+                        keyValuePair2.Key.FullName,
+                        keyValuePair2.Value.Count,
+                        string.Join(", ", keyValuePair2.Value.Take(6)),
+                        (keyValuePair2.Value.Count > 6) ? ", ..." : ""
+                    ));
+                }
+            }
+            List<Type> list2 = [.. (from kv in dictionary2
+                                where kv.Value.Count == totalBuildings
+                                select kv.Key)];
+            if (list2.Count > 0)
+            {
+                Debug.Log($"Components present in all {totalBuildings} buildings:");
+                using List<Type>.Enumerator enumerator3 = list2.GetEnumerator();
+                while (enumerator3.MoveNext())
+                {
+                    Type type2 = enumerator3.Current;
+                    Debug.Log(" - " + type2.FullName);
+                }
+                return dictionary2;
+            }
+            Debug.Log("No single component type is present in every building.");
+            return dictionary2;
+        } 
     }
 }

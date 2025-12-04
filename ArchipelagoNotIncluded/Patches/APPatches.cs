@@ -26,6 +26,7 @@ namespace ArchipelagoNotIncluded.Patches
             //Debug.Log("Not ModItem");
             return false;
         }
+
         public static bool CheckItemList(string InternalName)
         {
             if (ArchipelagoNotIncluded.StarterTech.Contains(InternalName))
@@ -109,7 +110,7 @@ namespace ArchipelagoNotIncluded.Patches
             if (APSaveData.Instance.APSeedInfo != null)
                 ArchipelagoNotIncluded.info = APSaveData.Instance.APSeedInfo;
 
-            List<PlanScreen.PlanInfo> storage = new List<PlanScreen.PlanInfo>();
+            List<PlanScreen.PlanInfo> storage = [];
             /*foreach (PlanScreen.PlanInfo info in TUNING.BUILDINGS.PLANORDER)
             {
                 Debug.Log($"{info.category}: ");
@@ -154,18 +155,17 @@ namespace ArchipelagoNotIncluded.Patches
                 }
                 if (ArchipelagoNotIncluded.Sciences?.Count > 0 && ArchipelagoNotIncluded.Sciences.TryGetValue(InternalTech, out List<string> techList) == true)
                 {
-                    if (techList == null)
-                        techList = new List<string>();
+                    techList ??= [];
                     techList.Add(item.internal_name);
                 }
                 else
                 {
                     if (InternalTech == "None")
                         continue;
-                    ArchipelagoNotIncluded.Sciences[InternalTech] = new List<string>
-                        {
+                    ArchipelagoNotIncluded.Sciences[InternalTech] =
+                        [
                             item.internal_name
-                        };
+                        ];
                 }
             }
 
@@ -185,7 +185,7 @@ namespace ArchipelagoNotIncluded.Patches
 
             Techs instance = Db.Get().Techs;
 
-            Dictionary<string, int> idCounts = new Dictionary<string, int>();
+            Dictionary<string, int> idCounts = [];
             foreach (KeyValuePair<string, List<string>> pair in ArchipelagoNotIncluded.info.technologies)
             {
                 if (pair.Key.ToLower() == "none" || String.IsNullOrEmpty(pair.Key))
@@ -205,17 +205,17 @@ namespace ArchipelagoNotIncluded.Patches
                             {"orbital", 0f }
                         };
                 if (tech == null)
-                    tech = new Tech(pair.Key, new List<string>(), instance, researchCost);
+                    tech = new Tech(pair.Key, [], instance, researchCost);
                 else
                 {
                     if (researchCost != null)
                         tech.costsByResearchTypeID = researchCost;
-                    tech.unlockedItemIDs = new List<string>();
-                    tech.unlockedItems = new List<TechItem>();
+                    tech.unlockedItemIDs = [];
+                    tech.unlockedItems = [];
                 }
                 foreach (string techitemidplayer in pair.Value)
                 {
-                    string[] splits = techitemidplayer.Split(new string[] { ">>" }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] splits = techitemidplayer.Split([">>"], StringSplitOptions.RemoveEmptyEntries);
                     string techitemid = splits[0];
                     int playerid = int.Parse(splits[1]);
                     if (idCounts.ContainsKey(techitemid))
@@ -239,7 +239,7 @@ namespace ArchipelagoNotIncluded.Patches
                             //tech.unlockedItems.Add(Db.Get().TechItems.AddTechItem(techitemid, techitemid, techitemid, Db.Get().TechItems.GetPrefabSpriteFnBuilder(techitemid.ToTag())));
                             //InjectionMethods.AddItemToTechnologyKanim(techitemid, pair.Key, techitemid, techitemid, techitemid + "_kanim");
                         }
-                        tech.AddUnlockedItemIDs(new string[] { techitemid });
+                        tech.AddUnlockedItemIDs([techitemid]);
                         //InjectionMethods.AddBuildingToTechnology(pair.Key, techitemid);
                         //ArchipelagoNotIncluded.allTechList.Remove(techitemid);
                     }
@@ -424,11 +424,11 @@ namespace ArchipelagoNotIncluded.Patches
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            CodeMatcher matcher = new CodeMatcher(instructions);
+            CodeMatcher matcher = new(instructions);
             MethodInfo getInstance = AccessTools.PropertyGetter(typeof(Game), nameof(Game.Instance));
             FieldInfo activeResearch = AccessTools.Field(typeof(Research), nameof(Research.activeResearch));
             MethodInfo sendCheck = AccessTools.Method(typeof(Research_CheckBuyResearch_Patch), nameof(Research_CheckBuyResearch_Patch.SendArchipelagoCheck));
-            MethodInfo kmonoTrigger = AccessTools.Method(typeof(KMonoBehaviour), nameof(KMonoBehaviour.Trigger));
+            MethodInfo kmonoTrigger = AccessTools.Method(typeof(KMonoBehaviour), nameof(KMonoBehaviour.Trigger), [typeof(int), typeof(object)]);
 
             matcher.MatchStartForward(new CodeMatch(OpCodes.Call, getInstance))
                 .RemoveInstructions(6)
