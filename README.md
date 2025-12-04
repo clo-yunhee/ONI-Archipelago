@@ -23,18 +23,18 @@ The logic might still not be completable, due to starting planetoid conditions. 
 
 Ranching Dreckos for plastic or Hatches for Refined Metal is considered in-logic, and if necessary, buildings will be available before they are logically required.
 
-## Installing the Mod
+## Installing the Mod (only manual installation for now)
 
-### Steam Workshop
+### ~~Steam Workshop~~
 
-1. Open `Steam` and navigate to the `Oxygen Not Included` `Workshop` page.
-2. Use the search bar to search for `ArchipelagoNotIncluded`.
-3. Subscribe to the mod.
-4. Open `Oxygen Not Included`.
-5. Navigate to the `Mods` menu.
-6. Click the empty checkbox next to `ArchipelagoNotIncluded`.
-7. Close the `Mods` menu and accept the changes. The game will need to restart.
-8. The mod is now installed. If you want buildings added by Mods to be included in the randomization, proceed to [Mod List Setup (Optional)](#mod-list-setup-(optional)). If not, proceed to [Seed Generation](#seed-generation)
+1. ~~Open `Steam` and navigate to the `Oxygen Not Included` `Workshop` page.~~
+2. ~~Use the search bar to search for `ArchipelagoNotIncluded`.~~
+3. ~~Subscribe to the mod.~~
+4. ~~Open `Oxygen Not Included`.~~
+5. ~~Navigate to the `Mods` menu.~~
+6. ~~Click the empty checkbox next to `ArchipelagoNotIncluded`.~~
+7. ~~Close the `Mods` menu and accept the changes. The game will need to restart.~~
+8. ~~The mod is now installed. If you want buildings added by Mods to be included in the randomization, proceed to [Mod List Setup (Optional)](#mod-list-setup-(optional)). If not, proceed to [Seed Generation](#seed-generation)~~
 
 ### Manual Installation
 
